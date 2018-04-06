@@ -5,17 +5,26 @@
  */
 package view;
 
+import controller.BrgGadaiController;
+import dao.BrgGadaiDAO;
+
 /**
  *
  * @author TAMU
  */
 public class ViewBarangGadai extends javax.swing.JInternalFrame {
-
+    
+      private String header[] = {"ID Barang", "ID Jenis", "Nama Barang", "Berat","Kualitas"};
+      private String headerTable[] = {"idBarang", "idJns", "nmBarang", "berat", "kualitas"};
+      public BrgGadaiController bg;
     /**
      * Creates new form ViewBarangGadai
      */
     public ViewBarangGadai() {
         initComponents();
+        
+        bg = new BrgGadaiController();
+        bg.bindingAll(TblBrgGadai, header);
     }
 
     /**
@@ -27,27 +36,104 @@ public class ViewBarangGadai extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TblBrgGadai = new javax.swing.JTable();
+        btnCari = new javax.swing.JButton();
+        txtCari = new javax.swing.JTextField();
+        cmbKategori = new javax.swing.JComboBox<>();
+
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
         setTitle("Barang Gadai");
 
+        TblBrgGadai.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(TblBrgGadai);
+
+        btnCari.setText("Cari");
+        btnCari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCariActionPerformed(evt);
+            }
+        });
+
+        cmbKategori.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "idBarang", "idJenis", "Nama Barang", "Berat", "Kualitas" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(cmbKategori, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtCari, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnCari)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCari)
+                    .addComponent(txtCari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbKategori, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariActionPerformed
+        // TODO add your handling code here:
+//        bg.bindingSearch(TblBrgGadai, header, 
+//                header[cmbKategori.getSelectedIndex()], 
+//                txtCari.getText());
+        String kolom = "";
+        switch (cmbKategori.getSelectedIndex()) {
+            case 0:
+                kolom = "idBarang";
+                break;
+            case 1:
+                kolom = "idJns";
+                break;
+            case 2:
+                kolom = "nmBarang";
+                break;
+            case 3:
+                kolom = "berat";
+                break;
+            case 4:
+                kolom = "kualitas";
+                break;    
+            default:
+                throw new AssertionError();
+        }
+        bg.bindingSearch(TblBrgGadai, header, kolom, txtCari.getText());
+    }//GEN-LAST:event_btnCariActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable TblBrgGadai;
+    private javax.swing.JButton btnCari;
+    private javax.swing.JComboBox<String> cmbKategori;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField txtCari;
     // End of variables declaration//GEN-END:variables
 }

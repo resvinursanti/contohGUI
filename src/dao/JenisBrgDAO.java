@@ -23,7 +23,8 @@ public class JenisBrgDAO {
 
     public JenisBrgDAO() {
         this.fdao = new FunctionsDAO(HibernateUtil.getSessionFactory());
-    }
+        this.factory = HibernateUtil.getSessionFactory();
+      }
     
     public boolean insert(Object object){
         return fdao.insert(object);
@@ -33,17 +34,17 @@ public class JenisBrgDAO {
         return fdao.delete(Object.class,object.toString());
     }
     public List<Object> search(String category, String search) {
-        return fdao.getAll("FROM JENIS_BRG WHERE " + category + " LIKE '%" + search + "%'");
+        return fdao.getAll("FROM JenisBrg WHERE " + category + " LIKE '%" + search + "%'");
     }
 
     public Object getById(String Id) {
-        return fdao.getById("from JENIS_BRG where ID_JNS='" + Id + "'");
+        return fdao.getById("from JenisBrg where ID_JNS='" + Id + "'");
     }
     public boolean update(Object object) {
         return fdao.insert(object);
     }
 
     public List<Object> getAll() {
-        return fdao.getAll("FROM JENIS_BRG");
+        return fdao.getAll("FROM JenisBrg");
     }
 }

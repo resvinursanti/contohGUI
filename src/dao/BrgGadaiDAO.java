@@ -23,6 +23,7 @@ public class BrgGadaiDAO {
 
     public BrgGadaiDAO() {
         this.fdao = new FunctionsDAO(HibernateUtil.getSessionFactory());
+        this.factory = HibernateUtil.getSessionFactory();
     }
     
     public boolean insert(Object object){
@@ -33,17 +34,17 @@ public class BrgGadaiDAO {
         return fdao.delete(Object.class,object.toString());
     }
     public List<Object> search(String category, String search) {
-        return fdao.getAll("FROM BRG_GADAI WHERE " + category + " LIKE '%" + search + "%'");
+        return fdao.getAll("FROM BrgGadai WHERE " + category + " LIKE '%" + search + "%'");
     }
 
     public Object getById(String Id) {
-        return fdao.getById("from BRG_GADAI where ID_BARANG='" + Id + "'");
+        return fdao.getById("from BrgGadai where idBarang='" + Id + "'");
     }
     public boolean update(Object object) {
         return fdao.insert(object);
     }
 
     public List<Object> getAll() {
-        return fdao.getAll("FROM BRG_GADAI");
+        return fdao.getAll("FROM BrgGadai");
     }
 }
