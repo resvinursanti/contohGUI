@@ -45,15 +45,15 @@ Contributor(s):
     <property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
     <property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:XE</property>
     <property name="hibernate.connection.username">SYSTEM</property>
-    <property name="hibernate.connection.password">12345</property>
+    <property name="hibernate.connection.password">2429</property>
     <property name="hibernate.enable_lazy_load_no_trans">true</property>
     <property name="current_session_context_class">thread</property>
     <property name="hibernate.connection.autocommit">true</property>
     <property name="hibernate.default_schema">hr</property>
     <mapping class="entities.Angsurangadai"/>
     <mapping class="entities.BrgGadai"/>
-    <mapping class="entities.Customer"/>
     <mapping class="entities.JenisBrg"/>
     <mapping class="entities.Gadai"/>
+    <mapping class="entities.Customer"/>
   </session-factory>
 </hibernate-configuration>

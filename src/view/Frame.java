@@ -142,6 +142,7 @@ public class Frame extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void MenuFileClearWindowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuFileClearWindowActionPerformed
@@ -226,6 +227,10 @@ public class Frame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                try {
+                    Thread.sleep(2155);
+                } catch (Exception e) {
+                }
                 new Frame().setVisible(true);
             }
         });

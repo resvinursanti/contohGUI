@@ -33,17 +33,17 @@ public class CustomerDAO {
         return fdao.delete(Object.class,object.toString());
     }
     public List<Object> search(String category, String search) {
-        return fdao.getAll("FROM COSTUMER WHERE " + category + " LIKE '%" + search + "%'");
+        return fdao.getAll("FROM custumer WHERE " + category + " LIKE '%" + search + "%'");
     }
 
     public Object getById(String Id) {
-        return fdao.getById("from COSTUMER where ID_CUST='" + Id + "'");
+        return fdao.getById("from Costumer where ID_CUST='" + Id + "'");
     }
     public boolean update(Object object) {
         return fdao.insert(object);
     }
 
     public List<Object> getAll() {
-        return fdao.getAll("FROM CUSTOMER");
+        return fdao.getAll("FROM Customer");
     }
 }

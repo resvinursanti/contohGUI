@@ -6,6 +6,7 @@
 package view;
 
 import controller.AngsuranGadaiController;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -25,7 +26,7 @@ public class ViewAngsuranGadai extends javax.swing.JInternalFrame {
         cc = new AngsuranGadaiController();
         cc.bindingAll(TBLAngsuranGadai, header);
 //        cc.loadRegion(comboxCari);
-//        reset();
+        reset();
     }
 
     /**
@@ -90,6 +91,11 @@ public class ViewAngsuranGadai extends javax.swing.JInternalFrame {
 
             }
         ));
+        TBLAngsuranGadai.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TBLAngsuranGadaiMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(TBLAngsuranGadai);
 
         btnCari.setText("Cari");
@@ -123,7 +129,18 @@ public class ViewAngsuranGadai extends javax.swing.JInternalFrame {
 
         jLabel6.setText(":");
 
+        txtIDAngsuran.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtIDAngsuranKeyPressed(evt);
+            }
+        });
+
         btnHapus.setText("Hapus");
+        btnHapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHapusActionPerformed(evt);
+            }
+        });
 
         btnSimpan.setText("Simpan");
         btnSimpan.addActionListener(new java.awt.event.ActionListener() {
@@ -280,6 +297,25 @@ public class ViewAngsuranGadai extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariActionPerformed
+        String kolom = "";
+        switch (comboxCari.getSelectedIndex()) {
+            case 0:
+                kolom = "ID_ANGSURAN";
+                break;
+            case 1:
+                kolom = "ID_GADAI";
+                break;
+            case 2:
+                kolom = "ID_CUST";
+                break;
+            case 3:
+                kolom = "TGL_ANGSUR";
+                break;
+            default:
+                throw new AssertionError();
+        }
+        cc.bindingSearch(TBLAngsuranGadai, header, kolom,
+                txtCari.getText());
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCariActionPerformed
 
@@ -325,6 +361,57 @@ public class ViewAngsuranGadai extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTanggalAngsurPropertyChange
 
+    private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
+        int i = JOptionPane.showConfirmDialog(this, "Apakah Anda Yakin Ingin dihapus?");
+        if (i == 0) {
+            try {
+                String pesan = "Gagal hapus";
+                boolean hasil = cc.delete(txtIDAngsuran.getText());
+                if (hasil) {
+                    pesan = "Hore Berhasil";
+                    reset();
+                }
+                JOptionPane.showMessageDialog(this, pesan);
+                cc.bindingAll(TBLAngsuranGadai, header);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnHapusActionPerformed
+
+    private void TBLAngsuranGadaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TBLAngsuranGadaiMouseClicked
+        txtIDAngsuran.setText("" + TBLAngsuranGadai.getValueAt(TBLAngsuranGadai.getSelectedRow(), 0) + "");
+        txtIDGadai.setText("" + TBLAngsuranGadai.getValueAt(TBLAngsuranGadai.getSelectedRow(), 1) + "");
+        txtIDCust.setText("" + TBLAngsuranGadai.getValueAt(TBLAngsuranGadai.getSelectedRow(), 2) + "");
+        txtTanggalAngsur.setDate((Date) TBLAngsuranGadai.getValueAt(TBLAngsuranGadai.getSelectedRow(), 3));
+        txtJumlahAngsur.setText("" + TBLAngsuranGadai.getValueAt(TBLAngsuranGadai.getSelectedRow(), 4) + "");
+        txtDenda.setText("" + TBLAngsuranGadai.getValueAt(TBLAngsuranGadai.getSelectedRow(), 5) + "");
+        btnSimpan.setEnabled(true);
+        btnHapus.setEnabled(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TBLAngsuranGadaiMouseClicked
+
+    private void txtIDAngsuranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIDAngsuranKeyPressed
+        btnSimpan.setEnabled(true);
+        btnHapus.setEnabled(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIDAngsuranKeyPressed
+
+    public void reset() {
+        txtIDAngsuran.setText("");
+        txtIDGadai.setText("");
+        txtIDCust.setText("");
+        txtJumlahAngsur.setText("");
+        txtTanggalAngsur.setDate(new Date());
+        txtDenda.setText("");
+        txtCari.setText("");
+        txtIDAngsuran.setEnabled(true);
+        btnSimpan.setEnabled(false);
+        btnHapus.setEnabled(false);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TBLAngsuranGadai;

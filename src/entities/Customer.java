@@ -42,11 +42,11 @@ public class Customer implements Serializable {
     @Column(name = "ID_CUST")
     private String idCust;
     @Column(name = "NO_KTP")
-    private Long noKtp;
+    private Integer noKtp;
     @Column(name = "NM_CUST")
     private String nmCust;
     @Column(name = "NO_TELP")
-    private Long noTelp;
+    private Integer noTelp;
     @Column(name = "PEKERJAAN")
     private String pekerjaan;
     @Column(name = "ALAMAT")
@@ -71,11 +71,11 @@ public class Customer implements Serializable {
         this.idCust = idCust;
     }
 
-    public Long getNoKtp() {
+    public Integer getNoKtp() {
         return noKtp;
     }
 
-    public void setNoKtp(Long noKtp) {
+    public void setNoKtp(Integer noKtp) {
         this.noKtp = noKtp;
     }
 
@@ -87,11 +87,11 @@ public class Customer implements Serializable {
         this.nmCust = nmCust;
     }
 
-    public Long getNoTelp() {
+    public Integer getNoTelp() {
         return noTelp;
     }
 
-    public void setNoTelp(Long noTelp) {
+    public void setNoTelp(Integer noTelp) {
         this.noTelp = noTelp;
     }
 
