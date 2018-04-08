@@ -18,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
 public class CustomerController {
     CustomerDAO cc = new CustomerDAO();
 
-    public boolean insert(String idCust, Integer noKtp, String nmCust, Integer noTelp, String pekerjaan, String Alamat){
+    public boolean insert(String idCust, Long noKtp, String nmCust, Long noTelp, String pekerjaan, String Alamat){
         Customer c = new Customer();
         c.setIdCust(idCust);
         c.setNoKtp(noKtp);
@@ -29,7 +29,7 @@ public class CustomerController {
         return cc.insert(c);
     }
     
-    public boolean update(String idCust, Integer noKtp, String nmCust, Integer noTelp, String pekerjaan, String Alamat){
+    public boolean update(String idCust, Long noKtp, String nmCust, Long noTelp, String pekerjaan, String Alamat){
         Customer c = new Customer();
         c.setIdCust(idCust);
         c.setNoKtp(noKtp);

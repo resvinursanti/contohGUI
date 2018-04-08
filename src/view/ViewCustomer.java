@@ -278,17 +278,17 @@ public class ViewCustomer extends javax.swing.JInternalFrame {
         boolean hasil = false;
         if(!txtIDCust.isEnabled()){
             hasil = cc.update(txtIDCust.getText(),
-                Integer.parseInt(txtNOKtp.getText()),
+                Long.parseLong(txtNOKtp.getText()),
                 txtNama.getText(),
-                Integer.parseInt(txtNOTelp.getText()),
+                Long.parseLong(txtNOTelp.getText()),
                 txtPekerjaan.getText(),
                 txtAlamat.getText());
             txtIDCust.setEnabled(true);
         }else{
             hasil = cc.insert(txtIDCust.getText(),
-                Integer.parseInt(txtNOKtp.getText()),
+                Long.parseLong(txtNOKtp.getText()),
                 txtNama.getText(),
-                Integer.parseInt(txtNOTelp.getText()),
+                Long.parseLong(txtNOTelp.getText()),
                 txtPekerjaan.getText(),
                 txtAlamat.getText());
         }
