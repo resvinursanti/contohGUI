@@ -5,6 +5,16 @@
  */
 package view;
 
+import java.io.File;
+import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.util.HashMap;
+import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
+
 /**
  *
  * @author TAMU
@@ -32,6 +42,7 @@ public class Frame extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         MenuFileClearWindow = new javax.swing.JMenuItem();
         MenuFileClose = new javax.swing.JMenuItem();
+        MenuLihatLaporan = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         MenuEditTableAngsuran = new javax.swing.JMenuItem();
         MenuEditTableBarang = new javax.swing.JMenuItem();
@@ -76,6 +87,14 @@ public class Frame extends javax.swing.JFrame {
             }
         });
         jMenu1.add(MenuFileClose);
+
+        MenuLihatLaporan.setText("Lihat Laporan");
+        MenuLihatLaporan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuLihatLaporanActionPerformed(evt);
+            }
+        });
+        jMenu1.add(MenuLihatLaporan);
 
         jMenuBar1.add(jMenu1);
 
@@ -197,6 +216,34 @@ public class Frame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_MenuEditTableJenisBarangActionPerformed
 
+    private void MenuLihatLaporanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuLihatLaporanActionPerformed
+        // TODO add your handling code here:
+        Report r = new Report();
+        try {
+                String path = "Pegadaian/Pegadaian.jasper";
+                String driver="oracle.jdbc.OracleDriver";
+                String konek="jdbc:oracle:thin:@localhost:1521:XE";
+                String user="system";
+                String password="12345";
+                HashMap parameter = new HashMap();
+                Class.forName(driver);
+                Connection conn = DriverManager.getConnection(konek,user,password);
+                File reportFile=new File(path);
+                InputStream jReport = this.getClass().getClassLoader().getResourceAsStream(reportFile.getPath());
+//                JasperReport jReport = (JasperReport) JRLoader.loadObject(reportFile.getPath());
+                JasperPrint jPrint = JasperFillManager.fillReport(jReport, parameter, conn);
+                JasperViewer.viewReport(jPrint, true);
+                JasperViewer.setDefaultLookAndFeelDecorated(true);
+                JasperViewer viewer = new JasperViewer(jPrint);
+                r.add(viewer);
+                r.setVisible(true);
+                DesktopPane.add(viewer);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Laporan Tidak Dapat Dicetak!\n" + e.getMessage()
+                ,"Cetak Laporan", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_MenuLihatLaporanActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -245,6 +292,7 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JMenuItem MenuEditTableJenisBarang;
     private javax.swing.JMenuItem MenuFileClearWindow;
     private javax.swing.JMenuItem MenuFileClose;
+    private javax.swing.JMenuItem MenuLihatLaporan;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;

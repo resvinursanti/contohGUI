@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="1000" pageHeight="842" columnWidth="960" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="90b0b118-ba8e-47fd-a4f7-4a711e6fc74e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="23"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     LAPORANGSURGADAI."ID_GADAI" AS LAPORANGSURGADAI_ID_GADAI,
+     LAPORANGSURGADAI."Nama" AS LAPORANGSURGADAI_Nama,
+     LAPORANGSURGADAI."Januari" AS LAPORANGSURGADAI_Januari,
+     LAPORANGSURGADAI."Februari" AS LAPORANGSURGADAI_Februari,
+     LAPORANGSURGADAI."Maret" AS LAPORANGSURGADAI_Maret,
+     LAPORANGSURGADAI."April" AS LAPORANGSURGADAI_April,
+     LAPORANGSURGADAI."Mei" AS LAPORANGSURGADAI_Mei,
+     LAPORANGSURGADAI."Juni" AS LAPORANGSURGADAI_Juni,
+     LAPORANGSURGADAI."Juli" AS LAPORANGSURGADAI_Juli,
+     LAPORANGSURGADAI."Agustus" AS LAPORANGSURGADAI_Agustus,
+     LAPORANGSURGADAI."September" AS LAPORANGSURGADAI_September,
+     LAPORANGSURGADAI."Oktober" AS LAPORANGSURGADAI_Oktober,
+     LAPORANGSURGADAI."November" AS LAPORANGSURGADAI_November,
+     LAPORANGSURGADAI."Desember" AS LAPORANGSURGADAI_Desember,
+     LAPORANGSURGADAI."TOTAL" AS LAPORANGSURGADAI_TOTAL,
+     LAPORANGSURGADAI."Sisa" AS LAPORANGSURGADAI_Sisa
+FROM
+     "HR"."LAPORANGSURGADAI" LAPORANGSURGADAI]]>
+	</queryString>
+	<field name="LAPORANGSURGADAI_ID_GADAI" class="java.lang.String"/>
+	<field name="LAPORANGSURGADAI_NAMA" class="java.lang.String"/>
+	<field name="LAPORANGSURGADAI_JANUARI" class="java.math.BigDecimal"/>
+	<field name="LAPORANGSURGADAI_FEBRUARI" class="java.math.BigDecimal"/>
+	<field name="LAPORANGSURGADAI_MARET" class="java.math.BigDecimal"/>
+	<field name="LAPORANGSURGADAI_APRIL" class="java.math.BigDecimal"/>
+	<field name="LAPORANGSURGADAI_MEI" class="java.math.BigDecimal"/>
+	<field name="LAPORANGSURGADAI_JUNI" class="java.math.BigDecimal"/>
+	<field name="LAPORANGSURGADAI_JULI" class="java.math.BigDecimal"/>
+	<field name="LAPORANGSURGADAI_AGUSTUS" class="java.math.BigDecimal"/>
+	<field name="LAPORANGSURGADAI_SEPTEMBER" class="java.math.BigDecimal"/>
+	<field name="LAPORANGSURGADAI_OKTOBER" class="java.math.BigDecimal"/>
+	<field name="LAPORANGSURGADAI_NOVEMBER" class="java.math.BigDecimal"/>
+	<field name="LAPORANGSURGADAI_DESEMBER" class="java.math.BigDecimal"/>
+	<field name="LAPORANGSURGADAI_TOTAL" class="java.math.BigDecimal"/>
+	<field name="LAPORANGSURGADAI_SISA" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="100" splitType="Stretch">
+			<staticText>
+				<reportElement x="254" y="24" width="439" height="54" uuid="b8aee400-a830-4fb1-b1a0-6e512a0934a2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Cambria" size="26" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[LAPORAN ANGSURAN PEGADAIAN]]></text>
+			</staticText>
+			<image>
+				<reportElement x="21" y="0" width="124" height="100" uuid="4e87ec3a-13ea-4ac8-b0ce-471d1d0edd74"/>
+				<imageExpression><![CDATA["C:\\Users\\Evi\\Pictures\\unnamed.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="39" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="859" y="15" width="100" height="20" uuid="6696aefa-4e21-4224-8c1c-bf616e71dd3b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="false" isItalic="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="50" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="11" width="44" height="20" forecolor="#006666" backcolor="#CCCCCC" uuid="fb34144a-358e-4149-bc9e-871265fa0d3d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID Gadai]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="44" y="11" width="57" height="20" forecolor="#006666" backcolor="#CCCCCC" uuid="e822f96c-198d-4122-9e87-6fde35ae7f62"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nama]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="101" y="11" width="63" height="20" forecolor="#006666" backcolor="#CCCCCC" uuid="410051bd-dc26-408a-8b34-165914360b8e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Januari]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="164" y="11" width="68" height="20" forecolor="#006666" backcolor="#CCCCCC" uuid="7c2d4888-689c-4bc8-a957-471404d0c105"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Februari]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="232" y="11" width="64" height="20" forecolor="#006666" backcolor="#CCCCCC" uuid="a498f100-58f5-4267-bc10-ee3f4ae86df1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Maret]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="296" y="11" width="67" height="20" forecolor="#006666" backcolor="#CCCCCC" uuid="2c9463a7-5860-48dc-8386-1cc40d03914a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[April]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="363" y="11" width="63" height="20" forecolor="#006666" backcolor="#CCCCCC" uuid="513f7220-a85a-40bb-8d02-6c00d0d8ed13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mei]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="426" y="11" width="60" height="20" forecolor="#006666" backcolor="#CCCCCC" uuid="e2ee9dcf-c733-432b-ae1d-994c088d792b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Juni]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="486" y="11" width="61" height="20" forecolor="#006666" backcolor="#CCCCCC" uuid="dd1edf3a-c173-4c49-b73c-557573f69c36"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Juli]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="547" y="11" width="69" height="20" forecolor="#006666" backcolor="#CCCCCC" uuid="ffc07576-d503-4ed3-b592-947122cf69c4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Agustus]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="616" y="11" width="65" height="20" forecolor="#006666" backcolor="#CCCCCC" uuid="6d98cfb4-1246-4b91-951c-0399a702b8c1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[September]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="681" y="11" width="61" height="20" forecolor="#006666" backcolor="#CCCCCC" uuid="1d6e38ef-2fa2-4e62-b0d5-9cb0c3f816c7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Oktober]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="742" y="11" width="64" height="20" forecolor="#006666" backcolor="#CCCCCC" uuid="5f99c172-5ec8-4fd1-a6b9-397f73f017e4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[November]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="806" y="11" width="65" height="20" forecolor="#006666" backcolor="#CCCCCC" uuid="c646a8c4-8a56-4bf6-8901-9250bd24aaf4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Desember]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="871" y="11" width="44" height="20" forecolor="#006666" backcolor="#CCCCCC" uuid="27f13807-a5ac-4d75-a968-485017289d2a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="915" y="11" width="44" height="20" forecolor="#006666" backcolor="#CCCCCC" uuid="9b02987d-0045-4ca8-bdf7-a7126ef6d487"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sisa]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="29" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="44" height="20" uuid="fd325f5e-6676-49b6-a053-d650b9b87ea4"/>
+				<textElement verticalAlignment="Middle">
+					<font isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{LAPORANGSURGADAI_ID_GADAI}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="44" y="0" width="57" height="20" uuid="f20e9a40-0f3a-4fa9-b05d-d6db5bd8c7d5"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{LAPORANGSURGADAI_NAMA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="101" y="0" width="63" height="20" uuid="17174c8f-9f0f-4ea9-a2de-c41ef6234982"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{LAPORANGSURGADAI_JANUARI}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="164" y="0" width="68" height="20" uuid="e535225a-2c29-4dbf-a244-1e2a432facda"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{LAPORANGSURGADAI_FEBRUARI}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="232" y="0" width="64" height="20" uuid="e79a81c8-236f-43fe-b4fb-1edd2f73ca70"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{LAPORANGSURGADAI_MARET}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="296" y="0" width="67" height="20" uuid="449f2775-556a-4e16-89e2-3b7a1e29a319"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{LAPORANGSURGADAI_APRIL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="363" y="0" width="63" height="20" uuid="34380c03-b418-4ff8-8056-94c2a3fb9295"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{LAPORANGSURGADAI_MEI}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="426" y="0" width="60" height="20" uuid="8e5147ff-f15b-4e83-ae6e-30c7e9eba04b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{LAPORANGSURGADAI_JUNI}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="486" y="0" width="61" height="20" uuid="db59384e-5a90-4481-a793-df85d6433c69"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{LAPORANGSURGADAI_JULI}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="547" y="0" width="69" height="20" uuid="e8500345-8110-44ca-9349-4ccb60abfdbf"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{LAPORANGSURGADAI_AGUSTUS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="616" y="0" width="65" height="20" uuid="c7964013-1658-40ca-abbc-d795a8c89f82"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{LAPORANGSURGADAI_SEPTEMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="681" y="0" width="61" height="20" uuid="3cd9c3a2-89be-4ba8-942f-91a19fddbb07"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{LAPORANGSURGADAI_OKTOBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="742" y="0" width="64" height="20" uuid="eaf50bca-a137-4443-94ab-f28515ad79b5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{LAPORANGSURGADAI_NOVEMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="806" y="0" width="65" height="20" uuid="9c36fb0a-ba97-4183-93eb-777e83f6d4cb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{LAPORANGSURGADAI_DESEMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="871" y="0" width="44" height="20" uuid="2cc9ab72-52d9-4d82-8815-c9b206ba54a5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{LAPORANGSURGADAI_TOTAL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="915" y="0" width="44" height="20" uuid="048176ee-c746-4e90-bb19-6712a54f0bc2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{LAPORANGSURGADAI_SISA}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="835" y="34" width="80" height="20" uuid="3f455db7-a4fa-403a-8406-60eeda931a66"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="915" y="34" width="40" height="20" uuid="ef1a8d1f-af27-47b1-b42f-495ff52a5ce1"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
