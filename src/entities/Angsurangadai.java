@@ -58,6 +58,14 @@ public class Angsurangadai implements Serializable {
     public Angsurangadai() {
     }
 
+    public Angsurangadai(String idAngsuran, Date tglAngsur, Integer jmlAngsur, Integer denda) {
+        this.idAngsuran = idAngsuran;
+        this.tglAngsur = tglAngsur;
+        this.jmlAngsur = jmlAngsur;
+        this.denda = denda;
+    }
+
+    
     public Angsurangadai(String idAngsuran) {
         this.idAngsuran = idAngsuran;
     }

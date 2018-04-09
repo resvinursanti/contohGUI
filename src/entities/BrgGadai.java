@@ -56,6 +56,14 @@ public class BrgGadai implements Serializable {
     public BrgGadai() {
     }
 
+    public BrgGadai(String idBarang, String nmBarang, String berat, String kualitas) {
+        this.idBarang = idBarang;
+        this.nmBarang = nmBarang;
+        this.berat = berat;
+        this.kualitas = kualitas;
+    }
+    
+
     public BrgGadai(String idBarang) {
         this.idBarang = idBarang;
     }

@@ -41,7 +41,7 @@
                   <Component id="jScrollPane1" alignment="0" pref="471" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="comboxCari" min="-2" max="-2" attributes="0"/>
+                      <Component id="cmbKategori" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="txtCari" min="-2" pref="99" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -60,9 +60,9 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnCari" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtCari" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="comboxCari" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cmbKategori" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="129" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jPanel1" max="32767" attributes="0"/>
@@ -118,7 +118,7 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="txtIDCust" max="32767" attributes="0"/>
+                          <Component id="cmbCust" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="lblTanggalAngsur" min="-2" max="-2" attributes="0"/>
@@ -133,11 +133,11 @@
                               <Component id="lblIDGadai" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="txtIDGadai" max="32767" attributes="0"/>
+                                  <Component id="cmbGadai" min="-2" pref="123" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
@@ -192,7 +192,7 @@
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="lblIDGadai" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtIDGadai" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cmbGadai" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Component id="btnHapus" min="-2" pref="56" max="-2" attributes="0"/>
@@ -201,9 +201,9 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lblIDCust" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtIDCust" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cmbCust" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="lblTanggalAngsur" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -229,7 +229,7 @@
                       <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtDenda" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="25" max="32767" attributes="0"/>
+                  <EmptySpace pref="30" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -300,10 +300,6 @@
             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtIDAngsuranKeyPressed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtIDGadai">
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtIDCust">
-        </Component>
         <Component class="javax.swing.JTextField" name="txtJumlahAngsur">
         </Component>
         <Component class="javax.swing.JTextField" name="txtDenda">
@@ -330,19 +326,43 @@
             <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="txtTanggalAngsurPropertyChange"/>
           </Events>
         </Component>
+        <Component class="javax.swing.JComboBox" name="cmbCust">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="0"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbCustActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="cmbGadai">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="0"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
       </SubComponents>
     </Container>
     <Component class="javax.swing.JTextField" name="txtCari">
     </Component>
-    <Component class="javax.swing.JComboBox" name="comboxCari">
+    <Component class="javax.swing.JComboBox" name="cmbKategori">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="5">
+          <StringArray count="6">
             <StringItem index="0" value="ID Angsuran"/>
             <StringItem index="1" value="ID Gadai"/>
-            <StringItem index="2" value="Tanggal"/>
-            <StringItem index="3" value="Jumlah"/>
-            <StringItem index="4" value="Denda"/>
+            <StringItem index="2" value="Nama Cust"/>
+            <StringItem index="3" value="Tanggal"/>
+            <StringItem index="4" value="Jumlah"/>
+            <StringItem index="5" value="Denda"/>
           </StringArray>
         </Property>
       </Properties>

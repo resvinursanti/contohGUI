@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  */
 public class ViewGadai extends javax.swing.JInternalFrame {
     private String header[] = {"ID Gadai", "ID Customer", "ID Barang", "Jumlah Pinjaman","Tanggal Pengajuan", "Status", "Sisa Pinjaman"};
-//    private String headerTable[] = {"ID_ANGSURAN", "ID_GADAI", "ID_CUST", "TGL_ANGSUR", "JML_ANGSUR", "DENDA"};
+    private String headerTable[] = {"idGadai", "idCust", "idBarang", "jmlPinjaman", "tglPengajuan", "status", "sisa"};
     public GadaiController gc;
     /**
      * Creates new form ViewGadai
@@ -24,7 +24,8 @@ public class ViewGadai extends javax.swing.JInternalFrame {
         initComponents();
         gc = new GadaiController();
         gc.bindingAll(TBLGadai, header);
-//        cc.loadRegion(comboxCari);
+        gc.loadCustomer(cmbCust);
+        gc.loadBarang(cmbBrg);
         reset();
     }
 
@@ -53,17 +54,17 @@ public class ViewGadai extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         txtIDGadai = new javax.swing.JTextField();
-        txtIDCust = new javax.swing.JTextField();
-        txtIDBarang = new javax.swing.JTextField();
         txtJumlahPinjaman = new javax.swing.JTextField();
-        txtStatus = new javax.swing.JTextField();
         btnHapus = new javax.swing.JButton();
         btnSimpan = new javax.swing.JButton();
         txtTanggalPengajuan = new com.toedter.calendar.JDateChooser();
         lblSisaPinjman1 = new javax.swing.JLabel();
         txtSisaPinjaman1 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        comboxCari = new javax.swing.JComboBox<>();
+        cmbCust = new javax.swing.JComboBox<>();
+        cmbBrg = new javax.swing.JComboBox<>();
+        cmbStatus = new javax.swing.JComboBox<>();
+        cmbCari = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         TBLGadai = new javax.swing.JTable();
 
@@ -139,6 +140,8 @@ public class ViewGadai extends javax.swing.JInternalFrame {
 
         jLabel7.setText(":");
 
+        cmbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lunas", "Belum Lunas" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -156,25 +159,25 @@ public class ViewGadai extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
-                    .addComponent(jLabel5)
                     .addComponent(jLabel6)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel7))
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtTanggalPengajuan, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
-                    .addComponent(txtIDCust)
-                    .addComponent(txtIDBarang)
                     .addComponent(txtIDGadai)
                     .addComponent(txtJumlahPinjaman)
-                    .addComponent(txtStatus)
-                    .addComponent(txtSisaPinjaman1))
+                    .addComponent(txtSisaPinjaman1)
+                    .addComponent(cmbCust, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cmbBrg, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cmbStatus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(27, 27, 27)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnHapus, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSimpan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19))
         );
         jPanel1Layout.setVerticalGroup(
@@ -191,12 +194,12 @@ public class ViewGadai extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblIDCust)
                             .addComponent(jLabel2)
-                            .addComponent(txtIDCust, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cmbCust, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblIDBarang)
                             .addComponent(jLabel3)
-                            .addComponent(txtIDBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cmbBrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(21, 21, 21)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblJumlahPinjaman)
@@ -209,16 +212,19 @@ public class ViewGadai extends javax.swing.JInternalFrame {
                         .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblTanggalPengajuan)
-                        .addComponent(jLabel5))
-                    .addComponent(txtTanggalPengajuan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSisaPinjman)
-                    .addComponent(jLabel6)
-                    .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(lblTanggalPengajuan))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(txtTanggalPengajuan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblSisaPinjman)
+                            .addComponent(jLabel6)
+                            .addComponent(cmbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblSisaPinjman1)
                     .addComponent(jLabel7)
@@ -226,7 +232,7 @@ public class ViewGadai extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        comboxCari.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID Gadai", "Jumlah", "Tanggal Pengajuan" }));
+        cmbCari.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID Gadai", "Nama Customer", "Nama Barang", "Jumlah Gadai", "Tanggal Pengajuan", "Status" }));
 
         TBLGadai.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -256,7 +262,7 @@ public class ViewGadai extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(comboxCari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cmbCari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtCari, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -271,7 +277,7 @@ public class ViewGadai extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCari)
                     .addComponent(txtCari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboxCari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbCari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(7, 7, 7)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -283,23 +289,10 @@ public class ViewGadai extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariActionPerformed
-        String kolom = "";
-        switch (comboxCari.getSelectedIndex()) {
-            case 0:
-            kolom = "ID_Gadai";
-            break;
-            case 1:
-            kolom = "JUMLAH_PINJAMAN";
-            break;
-            case 2:
-            kolom = "TANGGAL_PENGAJUAN";
-            break;
-            default:
-            throw new AssertionError();
-        }
-        gc.bindingSearch(TBLGadai, header, kolom,
-            txtCari.getText());
         // TODO add your handling code here:
+        gc.bindingSearch(TBLGadai, header, 
+                headerTable[cmbCari.getSelectedIndex()], 
+                txtCari.getText());
     }//GEN-LAST:event_btnCariActionPerformed
 
     private void txtIDGadaiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIDGadaiKeyPressed
@@ -330,35 +323,47 @@ public class ViewGadai extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnHapusActionPerformed
 
     private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
-        boolean hasil = false;
-        if(!txtIDGadai.isEnabled()){
-            hasil = gc.update(txtIDGadai.getText(),
-                txtIDCust.getText(),
-                txtIDBarang.getText(),
-                Long.parseLong(txtJumlahPinjaman.getText()),
-                txtTanggalPengajuan.getDate().getTime()+"",
-                txtStatus.getText(),
-                Long.parseLong(txtStatus.getText()));
-            txtIDGadai.setEnabled(true);
-        }else{
-            hasil = gc.insert(txtIDGadai.getText(),
-                txtIDCust.getText(),
-                txtIDBarang.getText(),
-                Long.parseLong(txtJumlahPinjaman.getText()),
-                txtTanggalPengajuan.getDate().getTime()+"",
-                txtStatus.getText(),
-                Long.parseLong(txtStatus.getText()));
-        }
-        String pesan = "Gagal menambahkan data";
+boolean hasil = false;
+        hasil = gc.save(txtIDGadai.getText(), cmbCust.getSelectedItem().toString(),cmbBrg.getSelectedItem().toString(),
+                Long.parseLong(txtJumlahPinjaman.getText()),txtTanggalPengajuan.getDate().getTime()+"", cmbStatus.getSelectedItem().toString(), Long.parseLong(txtSisaPinjaman1.getText()), txtIDGadai.isEnabled());
+        String pesan = "Gagal menyimpan data";
         if (hasil) {
-            try {
-                pesan = "Berhasil menambahkan Data";
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            pesan = "Berhasil menyimpan data";
         }
         JOptionPane.showMessageDialog(this, pesan);
         gc.bindingAll(TBLGadai, header);
+        reset();
+       
+//        boolean hasil = false;
+//        if(!txtIDGadai.isEnabled()){
+//            hasil = gc.update(txtIDGadai.getText(),
+//                cmbCust.getSelectedItem(),
+//                cmbBrg.getSelectedItem(),
+//                Long.parseLong(txtJumlahPinjaman.getText()),
+//                txtTanggalPengajuan.getDate().getTime()+"",
+//                cmbStatus.getSelectedItem(),
+//                txtSisaPinjaman1.getText(),
+//                
+//            txtIDGadai.setEnabled(true);
+//        }else{
+//            hasil = gc.insert(txtIDGadai.getText(),
+//                txtIDCust.getText(),
+//                txtIDBarang.getText(),
+//                Long.parseLong(txtJumlahPinjaman.getText()),
+//                txtTanggalPengajuan.getDate().getTime()+"",
+//                txtStatus.getText(),
+//                Long.parseLong(txtStatus.getText()));
+//        }
+//        String pesan = "Gagal menambahkan data";
+//        if (hasil) {
+//            try {
+//                pesan = "Berhasil menambahkan Data";
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
+//        JOptionPane.showMessageDialog(this, pesan);
+//        gc.bindingAll(TBLGadai, header);
         //        }
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSimpanActionPerformed
@@ -375,23 +380,26 @@ public class ViewGadai extends javax.swing.JInternalFrame {
 
     private void TBLGadaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TBLGadaiMouseClicked
         txtIDGadai.setText("" + TBLGadai.getValueAt(TBLGadai.getSelectedRow(), 0) + "");
-        txtIDCust.setText("" + TBLGadai.getValueAt(TBLGadai.getSelectedRow(), 1) + "");
-        txtIDBarang.setText("" + TBLGadai.getValueAt(TBLGadai.getSelectedRow(), 2) + "");
         txtJumlahPinjaman.setText("" + TBLGadai.getValueAt(TBLGadai.getSelectedRow(), 3) + "");
         txtTanggalPengajuan.setDate((Date) TBLGadai.getValueAt(TBLGadai.getSelectedRow(), 4));
-        txtStatus.setText("" + TBLGadai.getValueAt(TBLGadai.getSelectedRow(), 5) + "");
-        txtSisaPinjaman1.setText("" + TBLGadai.getValueAt(TBLGadai.getSelectedRow(), 6) + "");
-        btnSimpan.setEnabled(true);
-        btnHapus.setEnabled(true);
+         txtSisaPinjaman1.setText("" + TBLGadai.getValueAt(TBLGadai.getSelectedRow(), 6) + "");
+       
+     //   txtIDCust.setText("" + TBLGadai.getValueAt(TBLGadai.getSelectedRow(), 1) + "");
+     //   txtIDBarang.setText("" + TBLGadai.getValueAt(TBLGadai.getSelectedRow(), 2) + "");
+      
+   //    txtStatus.setText("" + TBLGadai.getValueAt(TBLGadai.getSelectedRow(), 5) + "");
+   txtIDGadai.setEnabled(false);
+   btnSimpan.setEnabled(true);
+   btnHapus.setEnabled(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_TBLGadaiMouseClicked
     public void reset(){
         txtIDGadai.setText("");
-        txtIDCust.setText("");
-        txtIDBarang.setText("");
+        cmbCust.setSelectedIndex(0);
+        cmbBrg.setSelectedIndex(0);
         txtJumlahPinjaman.setText("");
         txtTanggalPengajuan.setDate(new Date());
-        txtStatus.setText("");
+        cmbStatus.setSelectedIndex(0);
         txtIDGadai.setEnabled(true);
         btnSimpan.setEnabled(false);
         btnHapus.setEnabled(false);
@@ -402,7 +410,10 @@ public class ViewGadai extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnCari;
     private javax.swing.JButton btnHapus;
     private javax.swing.JButton btnSimpan;
-    private javax.swing.JComboBox<String> comboxCari;
+    private javax.swing.JComboBox<String> cmbBrg;
+    private javax.swing.JComboBox<String> cmbCari;
+    private javax.swing.JComboBox<String> cmbCust;
+    private javax.swing.JComboBox<String> cmbStatus;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -420,12 +431,9 @@ public class ViewGadai extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblSisaPinjman1;
     private javax.swing.JLabel lblTanggalPengajuan;
     private javax.swing.JTextField txtCari;
-    private javax.swing.JTextField txtIDBarang;
-    private javax.swing.JTextField txtIDCust;
     private javax.swing.JTextField txtIDGadai;
     private javax.swing.JTextField txtJumlahPinjaman;
     private javax.swing.JTextField txtSisaPinjaman1;
-    private javax.swing.JTextField txtStatus;
     private com.toedter.calendar.JDateChooser txtTanggalPengajuan;
     // End of variables declaration//GEN-END:variables
 }

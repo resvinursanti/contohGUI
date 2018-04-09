@@ -5,6 +5,7 @@
  */
 package dao;
 
+import entities.BrgGadai;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -23,7 +24,7 @@ public class BrgGadaiDAO {
 
     public BrgGadaiDAO() {
         this.fdao = new FunctionsDAO(HibernateUtil.getSessionFactory());
-        this.factory = HibernateUtil.getSessionFactory();
+      //  this.factory = HibernateUtil.getSessionFactory();
     }
     
     public boolean insert(Object object){
@@ -31,7 +32,7 @@ public class BrgGadaiDAO {
     }
     
     public boolean delete(Object object){
-        return fdao.delete(Object.class,object.toString());
+        return fdao.delete(BrgGadai.class,object.toString());
     }
     public List<Object> search(String category, String search) {
         return fdao.getAll("FROM BrgGadai WHERE " + category + " LIKE '%" + search + "%'");

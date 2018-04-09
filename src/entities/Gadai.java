@@ -66,6 +66,14 @@ public class Gadai implements Serializable {
     public Gadai() {
     }
 
+    public Gadai(String idGadai, Long jmlPinjaman, Date tglPengajuan, String status, Long sisa) {
+        this.idGadai = idGadai;
+        this.jmlPinjaman = jmlPinjaman;
+        this.tglPengajuan = tglPengajuan;
+        this.status = status;
+        this.sisa = sisa;
+    }
+
     public Gadai(String idGadai) {
         this.idGadai = idGadai;
     }

@@ -30,14 +30,14 @@ public class AngsuranGadaiDAO {
     }
     
     public boolean delete(Object object){
-        return fdao.delete(Object.class,object.toString());
+        return fdao.delete(Angsurangadai.class,object.toString());
     }
     public List<Object> search(String category, String search) {
         return fdao.getAll("FROM Angsurangadai WHERE " + category + " LIKE '%" + search + "%'");
     }
 
     public Object getById(String Id) {
-        return fdao.getById("from Angsurangadai where ID_ANGSURAN='" + Id + "'");
+        return fdao.getById("from Angsurangadai where idAngsuran='" + Id + "'");
     }
     public boolean update(Object object) {
         return fdao.insert(object);

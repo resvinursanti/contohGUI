@@ -5,6 +5,7 @@
  */
 package dao;
 
+import entities.Customer;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -30,14 +31,14 @@ public class CustomerDAO {
     }
     
     public boolean delete(Object object){
-        return fdao.delete(Object.class,object.toString());
+        return fdao.delete(Customer.class,object.toString());
     }
     public List<Object> search(String category, String search) {
-        return fdao.getAll("FROM custumer WHERE " + category + " LIKE '%" + search + "%'");
+        return fdao.getAll("FROM Customer WHERE " + category + " LIKE '%" + search + "%'");
     }
 
     public Object getById(String Id) {
-        return fdao.getById("from Costumer where ID_CUST='" + Id + "'");
+        return fdao.getById("from Customer where idCust='" + Id + "'");
     }
     public boolean update(Object object) {
         return fdao.insert(object);

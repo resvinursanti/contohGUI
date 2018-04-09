@@ -5,6 +5,7 @@
  */
 package dao;
 
+import entities.Gadai;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -30,14 +31,14 @@ public class GadaiDAO {
     }
     
     public boolean delete(Object object){
-        return fdao.delete(Object.class,object.toString());
+        return fdao.delete(Gadai.class,object.toString());
     }
     public List<Object> search(String category, String search) {
         return fdao.getAll("FROM Gadai WHERE " + category + " LIKE '%" + search + "%'");
     }
 
     public Object getById(String Id) {
-        return fdao.getById("from Gadai where ID_GADAI='" + Id + "'");
+        return fdao.getById("from Gadai where idGadai='" + Id + "'");
     }
     public boolean update(Object object) {
         return fdao.insert(object);
