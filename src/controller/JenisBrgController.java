@@ -19,15 +19,34 @@ public class JenisBrgController {
     
    JenisBrgDAO jbDAO = new JenisBrgDAO();
    
+   
+   /**
+    * 
+    * @param table
+    * @param header
+    * @param category
+    * @param cari untuk mencari data pada jenisbrg
+    */
    public void bindingSearch(JTable table, String[] header, String category, String cari){
         bindingTabels(table, header, jbDAO.search(category, cari));  
     }  
  
+   /**
+    * 
+    * @param table untuk menampilkan data pada tabel
+    * @param header 
+    */
  public void bindingAll(JTable table, String[] header)
     {
         bindingTabels(table, header, jbDAO.getAll());
     }
  
+ /**
+  * 
+  * @param tabel
+  * @param header
+  * @param datas 
+  */
  private void bindingTabels(JTable tabel, String[] header, List<Object> datas) {
         JenisBrg l;
         DefaultTableModel model = new DefaultTableModel(header, 0);

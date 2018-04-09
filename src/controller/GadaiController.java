@@ -33,6 +33,19 @@ public class GadaiController {
         this.bgDAO = new BrgGadaiDAO();
     }
     
+    /**
+     * 
+     * @param idGadai
+     * @param idCust
+     * @param idBrg
+     * @param jmlPinjaman
+     * @param tglPengajuan
+     * @param status
+     * @param sisa
+     * @param isSave
+     * @return save untuk menyimpan data pada tabel gadai
+     */
+    
     public boolean save(String idGadai, String idCust, String idBrg, Long jmlPinjaman, String tglPengajuan, String status,Long sisa, boolean isSave){
         Gadai ang = new Gadai(idGadai, jmlPinjaman, (new java.sql.Date(new Long(tglPengajuan))), status, sisa);
         String[] csId = idCust.split(" ");
@@ -69,15 +82,34 @@ public class GadaiController {
 //    return gdao.update(a);
 //}
 
+    /**
+     * 
+     * @param id
+     * @return delete untuk mengapus data pada tabel gadai
+     */
  public boolean delete(String id) {
         return gDAO.delete(id);
     }
     
+ /**
+  * 
+  * @param table
+  * @param bindingAll untuk menampilkan semua data pada tabel gadai
+  */
  public void bindingAll(JTable table, String[] header)
     {
         bindingTabels(table, header, gDAO.getAll());
     }
 
+ 
+ /**
+  * 
+  * @param table
+  * @param header
+  * @param category
+  * @param cari 
+  * @return bindingSearch untuk mencari data pada tabel gadai
+  */
  public void bindingSearch(JTable table, String[] header, String category, String cari){
              String search = cari;
              if (category.equalsIgnoreCase("idCust")) {
@@ -92,7 +124,13 @@ public class GadaiController {
             bindingTabels(table, header, gDAO.search(category, search));
         }
 
- 
+ /**
+  * 
+  * @param tabel
+  * @param header
+  * @param datas
+  * @return bindingTabels untuk menampilkan data pada tabel gadai
+  */
  private void bindingTabels(JTable tabel, String[] header, List<Object> datas) {
        DefaultTableModel model = new DefaultTableModel(header, 0);
         int i = 1;
@@ -111,12 +149,22 @@ public class GadaiController {
         }
         tabel.setModel(model);
     }
+ 
+ /**
+  * 
+  * @param loadBarang untuk menampilkan relasi antara tabel barang dan gadai pada combobox
+  */
      public void loadBarang (JComboBox jComboBox) {
         bgDAO.getAll().stream().map((object) -> (BrgGadai) object).forEachOrdered((brgGadai) -> {
             jComboBox.addItem(brgGadai.getIdBarang()+" - " 
             +brgGadai.getNmBarang());
         });
    }
+     
+     /**
+      * 
+      * @param loadcustomer untuk menampilkan relasi antara tabel customer dan gadai pada combobox
+      */
       public void loadCustomer (JComboBox jComboBox) {
         cDAO.getAll().stream().map((object) -> (Customer) object).forEachOrdered((customer) -> {
             jComboBox.addItem(customer.getIdCust()+" - "

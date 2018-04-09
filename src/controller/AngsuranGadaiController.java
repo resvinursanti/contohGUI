@@ -32,6 +32,18 @@ public class AngsuranGadaiController {
         this.cDAO = new CustomerDAO();
     }
     
+    /**
+     * 
+     * @param idAngsuran 
+     * @param idGadai
+     * @param idCust
+     * @param tglAngsur
+     * @param jmlAngsur
+     * @param denda
+     * @param isSave
+     * @return save untuk menyimpan data pada tabel angsurangadai
+     */
+    
      public boolean save(String idAngsuran, String idGadai, String idCust, String tglAngsur, Integer jmlAngsur, Integer denda, boolean isSave){
         Angsurangadai ang = new Angsurangadai(idAngsuran, new java.sql.Date(new Long(tglAngsur)), jmlAngsur, denda);
         String[] gdId = idGadai.split(" ");
@@ -41,11 +53,20 @@ public class AngsuranGadaiController {
         if (isSave) return aDAO.insert(ang);
         return aDAO.update(ang);
 }
+     
+     /**
+      * 
+      * @param LoadGadai untuk menamplilkan relasi gadai di tabel angsurangadai pada combobox
+      */
       public void loadGadai (JComboBox jComboBox) {
         gDAO.getAll().stream().map((object) -> (Gadai) object).forEachOrdered((gadai) -> {
             jComboBox.addItem(gadai.getIdGadai());
         });
    }
+      /**
+       * 
+       * @param LoadCustomer untuk menampilkan relasi customer pada tabel angsurangadai di combobox 
+       */
       public void loadCustomer (JComboBox jComboBox) {
         cDAO.getAll().stream().map((object) -> (Customer) object).forEachOrdered((customer) -> {
             jComboBox.addItem(customer.getIdCust()+" - "
