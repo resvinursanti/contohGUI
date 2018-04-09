@@ -382,12 +382,12 @@ boolean hasil = false;
         txtIDGadai.setText("" + TBLGadai.getValueAt(TBLGadai.getSelectedRow(), 0) + "");
         txtJumlahPinjaman.setText("" + TBLGadai.getValueAt(TBLGadai.getSelectedRow(), 3) + "");
         txtTanggalPengajuan.setDate((Date) TBLGadai.getValueAt(TBLGadai.getSelectedRow(), 4));
+        cmbStatus.setSelectedItem("" +TBLGadai.getValueAt(TBLGadai.getSelectedRow(), 5) + "");
          txtSisaPinjaman1.setText("" + TBLGadai.getValueAt(TBLGadai.getSelectedRow(), 6) + "");
        
      //   txtIDCust.setText("" + TBLGadai.getValueAt(TBLGadai.getSelectedRow(), 1) + "");
      //   txtIDBarang.setText("" + TBLGadai.getValueAt(TBLGadai.getSelectedRow(), 2) + "");
       
-   //    txtStatus.setText("" + TBLGadai.getValueAt(TBLGadai.getSelectedRow(), 5) + "");
    txtIDGadai.setEnabled(false);
    btnSimpan.setEnabled(true);
    btnHapus.setEnabled(true);

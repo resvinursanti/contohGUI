@@ -275,8 +275,8 @@ public class ViewBarangGadai extends javax.swing.JInternalFrame {
     private void TblBrgGadaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TblBrgGadaiMouseClicked
          // TODO add your handling code here:
         txtIdBrg.setText(TblBrgGadai.getValueAt(TblBrgGadai.getSelectedRow(), 1) + "");
-        txtNmBrg.setText(TblBrgGadai.getValueAt(TblBrgGadai.getSelectedRow(), 2) + "");
-        txtBerat.setText(TblBrgGadai.getValueAt(TblBrgGadai.getSelectedRow(), 3) + "");
+        txtNmBrg.setText(TblBrgGadai.getValueAt(TblBrgGadai.getSelectedRow(), 3) + "");
+        txtBerat.setText(TblBrgGadai.getValueAt(TblBrgGadai.getSelectedRow(), 4) + "");
        // cmbIdJns.setText(tblLocation.getValueAt(tblLocation.getSelectedRow(), 2) + "");
         
      //   cmbKualitas.set(TblBrgGadai.getValueAt(TblBrgGadai.getSelectedRow(), 5) + "");

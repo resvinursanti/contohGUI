@@ -207,7 +207,7 @@ public class ViewCustomer extends javax.swing.JInternalFrame {
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
 
-        comboxCari.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID Customer", "Nama", "Pekerjaan" }));
+        comboxCari.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Id Customer", "No KTP", "Nama Cust", "No Telpon", "Pekerjaan", "Alamat" }));
 
         TBLCustomer.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -270,6 +270,7 @@ public class ViewCustomer extends javax.swing.JInternalFrame {
         txtNOTelp.setText("" + TBLCustomer.getValueAt(TBLCustomer.getSelectedRow(), 3));
         txtPekerjaan.setText("" + TBLCustomer.getValueAt(TBLCustomer.getSelectedRow(), 4) + "");
         txtAlamat.setText("" + TBLCustomer.getValueAt(TBLCustomer.getSelectedRow(), 5) + "");
+        txtIDCust.setEnabled(false);
         btnSimpan.setEnabled(true);
         btnHapus.setEnabled(true);
         // TODO add your handling code here:
@@ -338,13 +339,22 @@ public class ViewCustomer extends javax.swing.JInternalFrame {
         String kolom = "";
         switch (comboxCari.getSelectedIndex()) {
             case 0:
-            kolom = "ID_CUST";
+            kolom = "idCust";
             break;
             case 1:
-            kolom = "NAMA";
+            kolom = "noKtp";
             break;
             case 2:
-            kolom = "PEKERJAAN";
+            kolom = "nmCust";
+            break;
+            case 3:
+            kolom = "noTelp";
+            break;
+            case 4:
+            kolom = "pekerjaan";
+            break;
+            case 5:
+            kolom = "alamat";
             break;
             default:
             throw new AssertionError();

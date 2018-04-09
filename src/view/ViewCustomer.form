@@ -289,10 +289,13 @@
     <Component class="javax.swing.JComboBox" name="comboxCari">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="3">
-            <StringItem index="0" value="ID Customer"/>
-            <StringItem index="1" value="Nama"/>
-            <StringItem index="2" value="Pekerjaan"/>
+          <StringArray count="6">
+            <StringItem index="0" value="Id Customer"/>
+            <StringItem index="1" value="No KTP"/>
+            <StringItem index="2" value="Nama Cust"/>
+            <StringItem index="3" value="No Telpon"/>
+            <StringItem index="4" value="Pekerjaan"/>
+            <StringItem index="5" value="Alamat"/>
           </StringArray>
         </Property>
       </Properties>
