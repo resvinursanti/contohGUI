@@ -348,7 +348,8 @@ public class ViewGadai extends javax.swing.JInternalFrame {
 //        }
         boolean hasil = false;
        hasil = gc.save(txtIDGadai.getText(), cmbCust.getSelectedItem().toString(),cmbBrg.getSelectedItem().toString(),
-                Long.parseLong(txtJumlahPinjaman.getText()),txtTanggalPengajuan.getDate().getTime()+"", Long.parseLong(txtSisaPinjaman1.getText()), txtStatus.getText(), txtIDGadai.isEnabled());
+                Long.parseLong(txtJumlahPinjaman.getText()),txtTanggalPengajuan.getDate().getTime()+"", 
+                Long.parseLong(txtSisaPinjaman1.getText()), txtStatus.getText(), txtIDGadai.isEnabled());
         String pesan = "Gagal menyimpan data";
         if (hasil) {
             pesan = "Berhasil menyimpan data";

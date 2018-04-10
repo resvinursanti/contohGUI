@@ -41,9 +41,7 @@ import javax.xml.bind.annotation.XmlTransient;
     
 public class Gadai implements Serializable {
 
-    @Column(name = "STATUS")
-    private String status;
-
+  
 //    @JoinColumn(name = "ID_HISTORYGADAI", referencedColumnName = "ID_HISTORYGADAI")
 //    @ManyToOne(fetch = FetchType.LAZY)
 //    private HistoryGadai idHistorygadai;
@@ -60,6 +58,9 @@ public class Gadai implements Serializable {
     private Date tglPengajuan;
     @Column(name = "SISA")
     private Long sisa;
+    @Column(name = "STATUS")
+    private String status;
+
     @JoinColumn(name = "ID_BARANG", referencedColumnName = "ID_BARANG")
     @ManyToOne(fetch = FetchType.LAZY)
     private BrgGadai idBarang;
