@@ -36,9 +36,13 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Gadai.findByIdGadai", query = "SELECT g FROM Gadai g WHERE g.idGadai = :idGadai")
     , @NamedQuery(name = "Gadai.findByJmlPinjaman", query = "SELECT g FROM Gadai g WHERE g.jmlPinjaman = :jmlPinjaman")
     , @NamedQuery(name = "Gadai.findByTglPengajuan", query = "SELECT g FROM Gadai g WHERE g.tglPengajuan = :tglPengajuan")
-    , @NamedQuery(name = "Gadai.findByStatus", query = "SELECT g FROM Gadai g WHERE g.status = :status")
+ //   , @NamedQuery(name = "Gadai.findByStatus", query = "SELECT g FROM Gadai g WHERE g.status = :status")
     , @NamedQuery(name = "Gadai.findBySisa", query = "SELECT g FROM Gadai g WHERE g.sisa = :sisa")})
 public class Gadai implements Serializable {
+
+    @JoinColumn(name = "ID_HISTORYGADAI", referencedColumnName = "ID_HISTORYGADAI")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private HistoryGadai idHistorygadai;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -50,8 +54,6 @@ public class Gadai implements Serializable {
     @Column(name = "TGL_PENGAJUAN")
     @Temporal(TemporalType.TIMESTAMP)
     private Date tglPengajuan;
-    @Column(name = "STATUS")
-    private String status;
     @Column(name = "SISA")
     private Long sisa;
     @JoinColumn(name = "ID_BARANG", referencedColumnName = "ID_BARANG")
@@ -66,13 +68,16 @@ public class Gadai implements Serializable {
     public Gadai() {
     }
 
-    public Gadai(String idGadai, Long jmlPinjaman, Date tglPengajuan, String status, Long sisa) {
+    public Gadai(String idGadai, Long jmlPinjaman, Date tglPengajuan, Long sisa) {
         this.idGadai = idGadai;
         this.jmlPinjaman = jmlPinjaman;
         this.tglPengajuan = tglPengajuan;
-        this.status = status;
         this.sisa = sisa;
     }
+
+    
+
+  
 
     public Gadai(String idGadai) {
         this.idGadai = idGadai;
@@ -102,13 +107,13 @@ public class Gadai implements Serializable {
         this.tglPengajuan = tglPengajuan;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
+//    public String getStatus() {
+//        return status;
+//    }
+//
+//    public void setStatus(String status) {
+//        this.status = status;
+//    }
 
     public Long getSisa() {
         return sisa;
@@ -166,6 +171,14 @@ public class Gadai implements Serializable {
     @Override
     public String toString() {
         return "" + idGadai + "";
+    }
+
+    public HistoryGadai getIdHistorygadai() {
+        return idHistorygadai;
+    }
+
+    public void setIdHistorygadai(HistoryGadai idHistorygadai) {
+        this.idHistorygadai = idHistorygadai;
     }
     
 }

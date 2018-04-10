@@ -8,10 +8,10 @@ package controller;
 import dao.BrgGadaiDAO;
 import dao.CustomerDAO;
 import dao.GadaiDAO;
+import dao.HistoryGadaiDAO;
 import entities.BrgGadai;
 import entities.Customer;
 import entities.Gadai;
-import java.util.Date;
 import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
@@ -25,12 +25,14 @@ public class GadaiController {
     private final GadaiDAO gDAO;
     private final CustomerDAO cDAO;
     private final BrgGadaiDAO bgDAO;
+    private final HistoryGadaiDAO hgDAO;
 
     public GadaiController() 
     {
         this.gDAO = new GadaiDAO();
         this.cDAO = new CustomerDAO();
         this.bgDAO = new BrgGadaiDAO();
+        this.hgDAO = new HistoryGadaiDAO();
     }
     
     /**
@@ -46,8 +48,8 @@ public class GadaiController {
      * @return save untuk menyimpan data pada tabel gadai
      */
     
-    public boolean save(String idGadai, String idCust, String idBrg, Long jmlPinjaman, String tglPengajuan, String status,Long sisa, boolean isSave){
-        Gadai ang = new Gadai(idGadai, jmlPinjaman, (new java.sql.Date(new Long(tglPengajuan))), status, sisa);
+    public boolean save(String idGadai, String idCust, String idBrg, Long jmlPinjaman, String tglPengajuan, Long sisa, boolean isSave){
+        Gadai ang = new Gadai(idGadai, jmlPinjaman, (new java.sql.Date(new Long(tglPengajuan))), sisa);
         String[] csId = idCust.split(" ");
         String[] brgId = idBrg.split(" ");
         ang.setIdCust((Customer) cDAO.getById(csId[0]));
@@ -133,7 +135,6 @@ public class GadaiController {
   */
  private void bindingTabels(JTable tabel, String[] header, List<Object> datas) {
        DefaultTableModel model = new DefaultTableModel(header, 0);
-        int i = 1;
         for (Object data : datas) {
             Gadai g = (Gadai) data;
             Object[] data1 = {
@@ -142,8 +143,9 @@ public class GadaiController {
                 g.getIdBarang().getNmBarang(),
                 g.getJmlPinjaman(),
                 g.getTglPengajuan(),
-                g.getStatus(),
-                g.getSisa()
+              //  g.getStatus(),
+                g.getSisa(),
+                g.getIdHistorygadai().getStatus()
             };
             model.addRow(data1);
         }
@@ -163,7 +165,7 @@ public class GadaiController {
      
      /**
       * 
-      * @param loadcustomer untuk menampilkan relasi antara tabel customer dan gadai pada combobox
+      * @param loadCustomer untuk menampilkan relasi antara tabel customer dan gadai pada combobox
       */
       public void loadCustomer (JComboBox jComboBox) {
         cDAO.getAll().stream().map((object) -> (Customer) object).forEachOrdered((customer) -> {

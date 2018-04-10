@@ -53,7 +53,8 @@ Contributor(s):
     <mapping class="entities.Angsurangadai"/>
     <mapping class="entities.BrgGadai"/>
     <mapping class="entities.JenisBrg"/>
-    <mapping class="entities.Gadai"/>
     <mapping class="entities.Customer"/>
+    <mapping class="entities.HistoryGadai"/>
+    <mapping class="entities.Gadai"/>
   </session-factory>
 </hibernate-configuration>

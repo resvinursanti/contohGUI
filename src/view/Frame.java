@@ -220,6 +220,7 @@ public class Frame extends javax.swing.JFrame {
         // TODO add your handling code here:
         Report r = new Report();
         try {
+        
                 String path = "Pegadaian/Pegadaian.jasper";
                 String driver="oracle.jdbc.OracleDriver";
                 String konek="jdbc:oracle:thin:@localhost:1521:XE";

@@ -8,6 +8,7 @@
     <class>entities.BrgGadai</class>
     <class>entities.Customer</class>
     <class>entities.Laporangsurgadai</class>
+    <class>entities.HistoryGadai</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
       <property name="javax.persistence.jdbc.user" value="SYSTEM"/>
