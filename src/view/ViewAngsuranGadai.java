@@ -6,9 +6,10 @@
 package view;
 
 import controller.AngsuranGadaiController;
-import java.util.Calendar;
+import java.util.ArrayList;
+
 import java.util.Date;
-import java.util.GregorianCalendar;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,16 +18,18 @@ import javax.swing.JOptionPane;
  */
 public class ViewAngsuranGadai extends javax.swing.JInternalFrame {
     
-    private String header[] = {"ID Angsuran", "ID Gadai", "ID Customer", "Tanggal Angsur","Jumlah Angsuran", "Denda"};
-    private String headerTable[] = {"idAngsuran", "idGadai", "idCust", "tglAngsur", "jmlAngsur", "denda"};
+    private final String[] header = {"ID Angsuran", "ID Gadai", "ID Customer", "Tanggal Angsur","Jumlah Angsuran", "Denda"};
+    private final String[] headerTable = {"idAngsuran", "idGadai", "idCust", "tglAngsur", "jmlAngsur", "denda"};
     public AngsuranGadaiController cc;
+    private List<String> datas;
     /**
      * Creates new form ViewAngsuranGadai
      */
     public ViewAngsuranGadai() {
         initComponents();
+        datas = new ArrayList<>();
         cc = new AngsuranGadaiController();
-        cc.bindingAll(TBLAngsuranGadai, header);
+        datas = cc.bindingAll(TBLAngsuranGadai, header);
         cc.loadGadai(cmbGadai);
         cc.loadCustomer(cmbCust);
 //        cc.loadRegion(comboxCari);
@@ -415,14 +418,16 @@ cc.bindingSearch(TBLAngsuranGadai, header,
     }//GEN-LAST:event_btnHapusActionPerformed
 
     private void TBLAngsuranGadaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TBLAngsuranGadaiMouseClicked
-        
-        txtIDAngsuran.setText("" + TBLAngsuranGadai.getValueAt(TBLAngsuranGadai.getSelectedRow(), 0) + "");
-        txtTanggalAngsur.setDate((Date) TBLAngsuranGadai.getValueAt(TBLAngsuranGadai.getSelectedRow(), 3));        
-        txtJumlahAngsur.setText("" + TBLAngsuranGadai.getValueAt(TBLAngsuranGadai.getSelectedRow(), 4) + "");
-        txtDenda.setText("" + TBLAngsuranGadai.getValueAt(TBLAngsuranGadai.getSelectedRow(), 5) + "");
-      //  txtIDGadai.setText("" + TBLAngsuranGadai.getValueAt(TBLAngsuranGadai.getSelectedRow(), 1) + "");
-      //  txtIDCust.setText("" + TBLAngsuranGadai.getValueAt(TBLAngsuranGadai.getSelectedRow(), 2) + "");        
-        //txtTanggalAngsur.setDate(datane);
+        int row = TBLAngsuranGadai.getSelectedRow();
+        txtIDAngsuran.setText(TBLAngsuranGadai.getValueAt(row, 0)+"");
+        cmbGadai.setSelectedItem(getCombo(false).get(row));
+        cmbCust.setSelectedItem(getCombo(true).get(row));
+        txtTanggalAngsur.setDate((Date) TBLAngsuranGadai.getValueAt(row, 3));
+    //    txtTanggalAngsur.setDate((Date) TBLAngsuranGadai.getValueAt(TBLAngsuranGadai.getSelectedRow(), 3));        
+        txtJumlahAngsur.setText(TBLAngsuranGadai.getValueAt(row, 4)+"");
+        txtDenda.setText(TBLAngsuranGadai.getValueAt(row, 5)+"");
+         //txtTanggalAngsur.setDate(datane);
+         
         
 //        int day, month, year, day1, month1, year1, hasiltahun, hasilbulan, hasilhari, denda, pinjaman;
 //        GregorianCalendar datasaki = new GregorianCalendar();
@@ -475,6 +480,16 @@ cc.bindingSearch(TBLAngsuranGadai, header,
         txtIDAngsuran.setEnabled(true);
         btnSimpan.setEnabled(false);
         btnHapus.setEnabled(false);
+    }
+     private List<String> getCombo(boolean isGadai){
+        List<String> isi = new ArrayList<>();
+        String[] daftar = new String[datas.size()];
+        for (String data : datas) {
+            daftar = data.split(";");
+            if (isGadai) isi.add(daftar[1]);
+            else isi.add(daftar[0]);
+        }
+        return isi;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

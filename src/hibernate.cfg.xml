@@ -54,7 +54,6 @@ Contributor(s):
     <mapping class="entities.BrgGadai"/>
     <mapping class="entities.JenisBrg"/>
     <mapping class="entities.Customer"/>
-    <mapping class="entities.HistoryGadai"/>
-    <mapping class="entities.Gadai"/>
+    <mapping class="entities.Gadai" file="" jar="" package="" resource=""/>
   </session-factory>
 </hibernate-configuration>

@@ -8,6 +8,8 @@ package view;
 import controller.BrgGadaiController;
 import dao.BrgGadaiDAO;
 import entities.BrgGadai;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,13 +21,15 @@ public class ViewBarangGadai extends javax.swing.JInternalFrame {
       private String header[] = {"NO" , "ID Barang", "ID Jenis", "Nama Barang", "Berat","Kualitas"};
       private String headerTable[] = {"idBarang", "idJns", "nmBarang", "berat", "kualitas"};
       public BrgGadaiController bg;
+      private List<String> datas;
     /**
      * Creates new form ViewBarangGadai
      */
     public ViewBarangGadai() {
         initComponents();
         bg = new BrgGadaiController();
-        bg.bindingAll(TblBrgGadai, header);
+        datas = bg.bindingAll(TblBrgGadai, header);
+    //    bg.bindingAll(TblBrgGadai, header);
         bg.loadJenis(cmbIdJns);
         reset();
     }
@@ -274,17 +278,23 @@ public class ViewBarangGadai extends javax.swing.JInternalFrame {
 
     private void TblBrgGadaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TblBrgGadaiMouseClicked
          // TODO add your handling code here:
-        txtIdBrg.setText(TblBrgGadai.getValueAt(TblBrgGadai.getSelectedRow(), 1) + "");
-        txtNmBrg.setText(TblBrgGadai.getValueAt(TblBrgGadai.getSelectedRow(), 3) + "");
-        txtBerat.setText(TblBrgGadai.getValueAt(TblBrgGadai.getSelectedRow(), 4) + "");
+        int row = TblBrgGadai.getSelectedRow();
+ //         txtIDAngsuran.setText(TBLAngsuranGadai.getValueAt(row, 0)+"");
+       
+        txtIdBrg.setText(TblBrgGadai.getValueAt(row, 1) + "");
+        cmbIdJns.setSelectedItem(getCombo(false).get(row));
+        txtNmBrg.setText(TblBrgGadai.getValueAt(row, 3) + "");
+        txtBerat.setText(TblBrgGadai.getValueAt(row, 4) + "");
        // cmbIdJns.setText(tblLocation.getValueAt(tblLocation.getSelectedRow(), 2) + "");
         
-     //   cmbKualitas.set(TblBrgGadai.getValueAt(TblBrgGadai.getSelectedRow(), 5) + "");
+        cmbKualitas.setSelectedItem(TblBrgGadai.getValueAt(row, 5) + "");
    //     cmbCountry.setSelectedIndex(tblLocation.getValueAt(tblLocation.getSelectedRow(), 5) + "");
         
       //  txtIdBrg.setEnabled(false);
         btnSimpan.setEnabled(true);
         btnHapus.setEnabled(true);       
+        bg.bindingAll(TblBrgGadai, header);
+     
     }//GEN-LAST:event_TblBrgGadaiMouseClicked
 
     private void txtIdBrgKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdBrgKeyPressed
@@ -345,4 +355,14 @@ public class ViewBarangGadai extends javax.swing.JInternalFrame {
         btnSimpan.setEnabled(false);
         btnHapus.setEnabled(false);
     }
+ private List<String> getCombo(boolean isJenis){
+        List<String> isi = new ArrayList<>();
+        String[] daftar = new String[datas.size()];
+        for (String data : datas) {
+            daftar = data.split(";");
+            if (isJenis) isi.add(daftar[1]);
+            else isi.add(daftar[0]);
+        }
+        return isi;
+}
 }

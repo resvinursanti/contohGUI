@@ -9,6 +9,7 @@ import dao.BrgGadaiDAO;
 import dao.JenisBrgDAO;
 import entities.BrgGadai;
 import entities.JenisBrg;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
@@ -27,13 +28,7 @@ public class BrgGadaiController {
         this.bDAO = new BrgGadaiDAO();
         this.jdao = new JenisBrgDAO();
     }
-    /**
-     * 
-     * @param table
-     * @param header
-     * @param category
-     * @param bindingSearch untuk mencari data pada tabel brgGadai
-     */
+   
 public void bindingSearch(JTable table, String[] header, String category, String cari){
          String search = cari;
          if (category.equalsIgnoreCase("idJns")) {
@@ -43,15 +38,10 @@ public void bindingSearch(JTable table, String[] header, String category, String
             bindingTabels(table, header, bDAO.search(category, search));
         }
 
-/**
- * 
- * @param table
- * @param bindingALL untuk menampilkan semua data pada tabel brgGadai
- */
 
- public void bindingAll(JTable table, String[] header)
+ public List <String> bindingAll(JTable table, String[] header)
     {
-        bindingTabels(table, header, bDAO.getAll());
+        return bindingTabels(table, header, bDAO.getAll());
     }
  
  /**
@@ -61,13 +51,16 @@ public void bindingSearch(JTable table, String[] header, String category, String
   * @param bindingTabels untuk menampilkan data yg akan ditampilkan pada bindingall
   */
  
- private void bindingTabels(JTable tabel, String[] header, List<Object> datas) {
+ private List <String> bindingTabels(JTable tabel, String[] header, List<Object> datas) {
       //  BrgGadai l;
+        List<String> dataJenis = new ArrayList<>();
         DefaultTableModel model = new DefaultTableModel(header, 0);
         int i = 1;
         for (Object data : datas) {
             BrgGadai l = (BrgGadai) data;
        //     l = (BrgGadai) data;
+            dataJenis.add(l.getIdJns().getIdJns() +" - " + l.getIdJns().getNmJns());
+            
             Object[] data1 = {
                 i++,
                 l.getIdBarang(),
@@ -79,6 +72,7 @@ public void bindingSearch(JTable table, String[] header, String category, String
             model.addRow(data1);
         }
         tabel.setModel(model);
+        return dataJenis;
     }
  
  /**
@@ -103,6 +97,7 @@ public void bindingSearch(JTable table, String[] header, String category, String
     * @param loadJenis untuk menampilkan relasi antara jenis barang dengan tabel brggadai
     */
    public void loadJenis (JComboBox jComboBox) {
+        jComboBox.addItem(" - ");
         jdao.getAll().stream().map((object) -> (JenisBrg) object).forEachOrdered((jenisBrg) -> {
             jComboBox.addItem(jenisBrg.getIdJns()+" - "
                     + jenisBrg.getNmJns());

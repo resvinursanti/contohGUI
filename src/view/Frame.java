@@ -10,9 +10,11 @@ import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.HashMap;
+import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JRViewer;
 import net.sf.jasperreports.view.JasperViewer;
 
 /**
@@ -233,12 +235,14 @@ public class Frame extends javax.swing.JFrame {
                 InputStream jReport = this.getClass().getClassLoader().getResourceAsStream(reportFile.getPath());
 //                JasperReport jReport = (JasperReport) JRLoader.loadObject(reportFile.getPath());
                 JasperPrint jPrint = JasperFillManager.fillReport(jReport, parameter, conn);
-                JasperViewer.viewReport(jPrint, true);
-                JasperViewer.setDefaultLookAndFeelDecorated(true);
-                JasperViewer viewer = new JasperViewer(jPrint);
-                r.add(viewer);
-                r.setVisible(true);
-                DesktopPane.add(viewer);
+                JInternalFrame frame= new JInternalFrame("Report");
+                frame.getContentPane().add(new JRViewer(jPrint));
+                frame.pack();
+                frame.setVisible(true);
+                frame.setClosable(true);
+                frame.setMaximizable(true);
+                frame.setSize(1111, 711);
+                DesktopPane.add(frame);;
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Laporan Tidak Dapat Dicetak!\n" + e.getMessage()
                 ,"Cetak Laporan", JOptionPane.ERROR_MESSAGE);
