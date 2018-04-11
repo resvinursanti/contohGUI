@@ -3,6 +3,9 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="23"/>
 	<property name="ireport.y" value="0"/>
+	<parameter name="id_gadai" class="string">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT
      LAPORANGSURGADAI."ID_GADAI" AS LAPORANGSURGADAI_ID_GADAI,
@@ -22,7 +25,9 @@
      LAPORANGSURGADAI."TOTAL" AS LAPORANGSURGADAI_TOTAL,
      LAPORANGSURGADAI."Sisa" AS LAPORANGSURGADAI_Sisa
 FROM
-     "HR"."LAPORANGSURGADAI" LAPORANGSURGADAI]]>
+     "HR"."LAPORANGSURGADAI" LAPORANGSURGADAI
+WHERE 
+ LAPORANGSURGADAI."ID_GADAI"= $P{idGadai}]]>
 	</queryString>
 	<field name="LAPORANGSURGADAI_ID_GADAI" class="java.lang.String"/>
 	<field name="LAPORANGSURGADAI_NAMA" class="java.lang.String"/>

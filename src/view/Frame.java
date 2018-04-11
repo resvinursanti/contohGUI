@@ -15,7 +15,6 @@ import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.view.JRViewer;
-import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -45,6 +44,7 @@ public class Frame extends javax.swing.JFrame {
         MenuFileClearWindow = new javax.swing.JMenuItem();
         MenuFileClose = new javax.swing.JMenuItem();
         MenuLihatLaporan = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         MenuEditTableAngsuran = new javax.swing.JMenuItem();
         MenuEditTableBarang = new javax.swing.JMenuItem();
@@ -97,6 +97,14 @@ public class Frame extends javax.swing.JFrame {
             }
         });
         jMenu1.add(MenuLihatLaporan);
+
+        jMenuItem1.setText("Laporan Angsur");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
 
         jMenuBar1.add(jMenu1);
 
@@ -249,6 +257,13 @@ public class Frame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_MenuLihatLaporanActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        ReportAngsuran e = new ReportAngsuran();
+        e.show();
+        DesktopPane.add(e);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -301,5 +316,6 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     // End of variables declaration//GEN-END:variables
 }

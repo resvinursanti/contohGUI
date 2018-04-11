@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="700" pageHeight="842" columnWidth="660" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b2d8f80e-8493-4b80-9c1e-cfdaee1747c7">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="id_gadai" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     ANGSURANGADAI."ID_ANGSURAN" AS ANGSURANGADAI_ID_ANGSURAN,
+     ANGSURANGADAI."ID_GADAI" AS ANGSURANGADAI_ID_GADAI,
+     ANGSURANGADAI."ID_CUST" AS ANGSURANGADAI_ID_CUST,
+     ANGSURANGADAI."TGL_ANGSUR" AS ANGSURANGADAI_TGL_ANGSUR,
+     ANGSURANGADAI."JML_ANGSUR" AS ANGSURANGADAI_JML_ANGSUR,
+     ANGSURANGADAI."DENDA" AS ANGSURANGADAI_DENDA,
+     GADAI."JML_PINJAMAN" AS GADAI_JML_PINJAMAN,
+     GADAI."ID_GADAI" AS GADAI_ID_GADAI,
+     GADAI."TGL_PENGAJUAN" AS GADAI_TGL_PENGAJUAN,
+     GADAI."SISA" AS GADAI_SISA
+FROM
+     "HR"."GADAI" GADAI INNER JOIN "HR"."ANGSURANGADAI" ANGSURANGADAI ON GADAI."ID_GADAI" = ANGSURANGADAI."ID_GADAI"
+WHERE ANGSURANGADAI."ID_GADAI" = $P{id_gadai}]]>
+	</queryString>
+	<field name="ANGSURANGADAI_ID_ANGSURAN" class="java.lang.String"/>
+	<field name="ANGSURANGADAI_ID_GADAI" class="java.lang.String"/>
+	<field name="ANGSURANGADAI_ID_CUST" class="java.lang.String"/>
+	<field name="ANGSURANGADAI_TGL_ANGSUR" class="java.sql.Timestamp"/>
+	<field name="ANGSURANGADAI_JML_ANGSUR" class="java.math.BigDecimal"/>
+	<field name="ANGSURANGADAI_DENDA" class="java.math.BigDecimal"/>
+	<field name="GADAI_JML_PINJAMAN" class="java.math.BigDecimal"/>
+	<field name="GADAI_ID_GADAI" class="java.lang.String"/>
+	<field name="GADAI_TGL_PENGAJUAN" class="java.sql.Timestamp"/>
+	<field name="GADAI_SISA" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="94" splitType="Stretch">
+			<staticText>
+				<reportElement x="213" y="16" width="398" height="63" uuid="4bf71a82-c2a5-4faa-990d-7f5bc07907ca"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Adobe Garamond Pro" size="36" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Laporan Angsuran]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="156" splitType="Stretch">
+			<textField>
+				<reportElement x="513" y="95" width="147" height="20" uuid="763a3b7e-469e-4787-a167-a8ab7caf5068"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{GADAI_JML_PINJAMAN}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="513" y="75" width="147" height="20" uuid="5364badf-4cb5-4c11-8941-46b5055f487e"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{GADAI_TGL_PENGAJUAN}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="358" y="95" width="153" height="20" uuid="5c505f76-b266-4ba8-9dd9-fa167a74197d"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Jumlah Pinjaman	]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="358" y="75" width="153" height="20" uuid="d014dff7-f512-4c86-b05d-a52a69b3e1b0"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Tanggal Pengajuan Gadai	]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="358" y="115" width="153" height="20" uuid="481cba01-ab50-43ff-9409-ff7f301c8f6f"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Sisa Pinjaman		]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="511" y="115" width="149" height="20" uuid="26be76b1-3bde-4cab-aef1-8f1b694f64ac"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{GADAI_SISA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="460" y="0" width="180" height="20" uuid="ad18f630-0273-42a9-b6cc-132460c770d6"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="358" y="35" width="153" height="20" uuid="86c593b8-4ffd-44d7-972e-78d71325f12d"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[ID Gadai]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="513" y="35" width="145" height="20" uuid="165efc26-4695-49c2-a4e3-a310e19a91cb"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ANGSURANGADAI_ID_GADAI}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="513" y="55" width="147" height="20" uuid="07d616e6-5848-44ca-83ec-1335eab258f7"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ANGSURANGADAI_ID_CUST}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="358" y="55" width="153" height="20" uuid="25a747be-e2de-4e4a-847c-3126a73199c4"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[ID Cust]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="45" splitType="Stretch">
+			<staticText>
+				<reportElement x="5" y="20" width="134" height="20" uuid="10f0fafa-a4ae-40b9-88bc-2e5c6076f59d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[No Angsur]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="149" y="20" width="180" height="20" uuid="b28c0756-ade0-4c40-abda-41970b402df6"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[Tanggal Angsur]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="329" y="20" width="182" height="20" uuid="23b91c3e-30b7-4c95-bd2f-75443b567036"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[Jumlah Angsur]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="511" y="20" width="147" height="20" uuid="985eaebb-b257-4460-a5e5-5cb380fa86ef"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[Denda]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="28" splitType="Stretch">
+			<textField>
+				<reportElement x="7" y="0" width="132" height="20" uuid="161d8103-a595-43b6-845a-161f236db04c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ANGSURANGADAI_ID_ANGSURAN}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="149" y="0" width="180" height="20" uuid="7c408d3b-7074-40e6-a8d7-adecf00dbdda"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ANGSURANGADAI_TGL_ANGSUR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="329" y="0" width="182" height="20" uuid="33293d79-2899-4335-b232-70fe3b117a7a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ANGSURANGADAI_JML_ANGSUR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="513" y="0" width="147" height="20" uuid="703c775d-ab0a-479e-b6c8-c8924f5628af"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ANGSURANGADAI_DENDA}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
