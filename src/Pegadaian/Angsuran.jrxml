@@ -38,9 +38,9 @@ WHERE ANGSURANGADAI."ID_GADAI" = $P{id_gadai}]]>
 	<title>
 		<band height="94" splitType="Stretch">
 			<staticText>
-				<reportElement x="213" y="16" width="398" height="63" uuid="4bf71a82-c2a5-4faa-990d-7f5bc07907ca"/>
+				<reportElement x="149" y="14" width="346" height="63" uuid="4bf71a82-c2a5-4faa-990d-7f5bc07907ca"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Adobe Garamond Pro" size="36" isBold="true"/>
+					<font fontName="SansSerif" size="34" isBold="true" isItalic="true" isStrikeThrough="false"/>
 				</textElement>
 				<text><![CDATA[Laporan Angsuran]]></text>
 			</staticText>
@@ -50,56 +50,79 @@ WHERE ANGSURANGADAI."ID_GADAI" = $P{id_gadai}]]>
 		<band height="156" splitType="Stretch">
 			<textField>
 				<reportElement x="513" y="95" width="147" height="20" uuid="763a3b7e-469e-4787-a167-a8ab7caf5068"/>
-				<textElement verticalAlignment="Middle"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{GADAI_JML_PINJAMAN}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="513" y="75" width="147" height="20" uuid="5364badf-4cb5-4c11-8941-46b5055f487e"/>
-				<textElement verticalAlignment="Middle"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{GADAI_TGL_PENGAJUAN}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="358" y="95" width="153" height="20" uuid="5c505f76-b266-4ba8-9dd9-fa167a74197d"/>
-				<textElement verticalAlignment="Middle"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
 				<text><![CDATA[Jumlah Pinjaman	]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="358" y="75" width="153" height="20" uuid="d014dff7-f512-4c86-b05d-a52a69b3e1b0"/>
-				<textElement verticalAlignment="Middle"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
 				<text><![CDATA[Tanggal Pengajuan Gadai	]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="358" y="115" width="153" height="20" uuid="481cba01-ab50-43ff-9409-ff7f301c8f6f"/>
-				<textElement verticalAlignment="Middle"/>
-				<text><![CDATA[Sisa Pinjaman		]]></text>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Sisa Pinjaman]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="511" y="115" width="149" height="20" uuid="26be76b1-3bde-4cab-aef1-8f1b694f64ac"/>
-				<textElement verticalAlignment="Middle"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{GADAI_SISA}]]></textFieldExpression>
 			</textField>
 			<textField pattern="EEEEE dd MMMMM yyyy">
-				<reportElement x="460" y="0" width="180" height="20" uuid="ad18f630-0273-42a9-b6cc-132460c770d6"/>
+				<reportElement x="480" y="0" width="180" height="20" uuid="ad18f630-0273-42a9-b6cc-132460c770d6"/>
+				<textElement textAlignment="Right">
+					<font isItalic="true"/>
+				</textElement>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="358" y="35" width="153" height="20" uuid="86c593b8-4ffd-44d7-972e-78d71325f12d"/>
-				<textElement verticalAlignment="Middle"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
 				<text><![CDATA[ID Gadai]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="513" y="35" width="145" height="20" uuid="165efc26-4695-49c2-a4e3-a310e19a91cb"/>
-				<textElement verticalAlignment="Middle"/>
+				<reportElement x="515" y="35" width="145" height="20" uuid="165efc26-4695-49c2-a4e3-a310e19a91cb"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{ANGSURANGADAI_ID_GADAI}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="513" y="55" width="147" height="20" uuid="07d616e6-5848-44ca-83ec-1335eab258f7"/>
-				<textElement verticalAlignment="Middle"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{ANGSURANGADAI_ID_CUST}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="358" y="55" width="153" height="20" uuid="25a747be-e2de-4e4a-847c-3126a73199c4"/>
-				<textElement verticalAlignment="Middle"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
 				<text><![CDATA[ID Cust]]></text>
 			</staticText>
 		</band>
@@ -107,23 +130,31 @@ WHERE ANGSURANGADAI."ID_GADAI" = $P{id_gadai}]]>
 	<columnHeader>
 		<band height="45" splitType="Stretch">
 			<staticText>
-				<reportElement x="5" y="20" width="134" height="20" uuid="10f0fafa-a4ae-40b9-88bc-2e5c6076f59d"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<reportElement mode="Opaque" x="6" y="20" width="144" height="20" forecolor="#FFFFFF" backcolor="#003333" uuid="10f0fafa-a4ae-40b9-88bc-2e5c6076f59d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font isPdfEmbedded="false"/>
+				</textElement>
 				<text><![CDATA[No Angsur]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="149" y="20" width="180" height="20" uuid="b28c0756-ade0-4c40-abda-41970b402df6"/>
-				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<reportElement mode="Opaque" x="150" y="20" width="180" height="20" forecolor="#FFFFFF" backcolor="#003333" uuid="b28c0756-ade0-4c40-abda-41970b402df6"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="none">
+					<font isPdfEmbedded="false"/>
+				</textElement>
 				<text><![CDATA[Tanggal Angsur]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="329" y="20" width="182" height="20" uuid="23b91c3e-30b7-4c95-bd2f-75443b567036"/>
-				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<reportElement mode="Opaque" x="330" y="20" width="182" height="20" forecolor="#FFFFFF" backcolor="#003333" uuid="23b91c3e-30b7-4c95-bd2f-75443b567036"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="none">
+					<font isPdfEmbedded="false"/>
+				</textElement>
 				<text><![CDATA[Jumlah Angsur]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="511" y="20" width="147" height="20" uuid="985eaebb-b257-4460-a5e5-5cb380fa86ef"/>
-				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<reportElement mode="Opaque" x="512" y="20" width="147" height="20" forecolor="#FFFFFF" backcolor="#003333" uuid="985eaebb-b257-4460-a5e5-5cb380fa86ef"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="none">
+					<font isPdfEmbedded="false"/>
+				</textElement>
 				<text><![CDATA[Denda]]></text>
 			</staticText>
 		</band>
@@ -131,7 +162,7 @@ WHERE ANGSURANGADAI."ID_GADAI" = $P{id_gadai}]]>
 	<detail>
 		<band height="28" splitType="Stretch">
 			<textField>
-				<reportElement x="7" y="0" width="132" height="20" uuid="161d8103-a595-43b6-845a-161f236db04c"/>
+				<reportElement x="7" y="0" width="142" height="20" uuid="161d8103-a595-43b6-845a-161f236db04c"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{ANGSURANGADAI_ID_ANGSURAN}]]></textFieldExpression>
 			</textField>
@@ -156,7 +187,17 @@ WHERE ANGSURANGADAI."ID_GADAI" = $P{id_gadai}]]>
 		<band height="45" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch"/>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="538" y="31" width="80" height="20" uuid="0488f512-b83b-43fd-9073-4c401e9270a5"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="618" y="31" width="40" height="20" uuid="f6ccbef9-6407-4afc-b611-c34cc1cbfa9b"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
 	</pageFooter>
 	<summary>
 		<band height="42" splitType="Stretch"/>
