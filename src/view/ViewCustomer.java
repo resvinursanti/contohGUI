@@ -303,7 +303,10 @@ public class ViewCustomer extends javax.swing.JInternalFrame {
             }
         }
         JOptionPane.showMessageDialog(this, pesan);
+        
         cc.bindingAll(TBLCustomer, header);
+        
+        
         //        }
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSimpanActionPerformed

@@ -134,6 +134,9 @@
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JDesktopPane" name="DesktopPane">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new Background()"/>
+      </AuxValues>
 
       <Layout>
         <DimensionLayout dim="0">

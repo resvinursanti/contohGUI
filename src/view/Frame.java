@@ -27,6 +27,7 @@ public class Frame extends javax.swing.JFrame {
      */
     public Frame() {
         initComponents();
+        setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
     }
 
     /**
@@ -38,7 +39,7 @@ public class Frame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        DesktopPane = new javax.swing.JDesktopPane();
+        DesktopPane = new Background();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         MenuFileClearWindow = new javax.swing.JMenuItem();
@@ -176,6 +177,7 @@ public class Frame extends javax.swing.JFrame {
 
     private void MenuFileClearWindowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuFileClearWindowActionPerformed
         // TODO add your handling code here:
+        DesktopPane.removeAll();
     }//GEN-LAST:event_MenuFileClearWindowActionPerformed
 
     private void MenuFileCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuFileCloseMouseClicked
